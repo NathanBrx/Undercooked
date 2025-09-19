@@ -122,16 +122,19 @@ texture = ExtResource("5_jka67")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41906738, 0.5009601, 2.1501122)
 curve = SubResource("Curve3D_wc5p8")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.5156355, 0, -0.85680807, 0, 1, 0, 0.85680807, 0, -0.5156355, -0.47516653, 0, 4.9033875)
-progress = 59.76
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("sprite")]
+transform = Transform3D(0.5634015, 0, -0.826183, 0, 1, 0, 0.826183, 0, 0.5634015, 0.10522699, 0, 5.282465)
 script = ExtResource("6_i5arm")
+sprite = NodePath("CharacterBody3D/MeshInstance3D/Sprite3D")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(1.1177285, 0, 1.6523663, 0, 1, 0, -1.6390588, 0, 1.1268033, -2.1617365, 1.3713167, -0.09108853)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_a0tk4")
+
+[node name="Sprite3D" type="Sprite3D" parent="Path3D/PathFollow3D/CharacterBody3D/MeshInstance3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/CharacterBody3D"]
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
