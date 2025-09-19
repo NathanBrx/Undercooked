@@ -87,7 +87,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 6, 0)
 texture = ExtResource("2_jka67")
 
 [node name="station_salade" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, -10)
 mesh = SubResource("BoxMesh_cdqbm")
 
 [node name="Sprite3D" type="Sprite3D" parent="station_salade"]
@@ -95,7 +95,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 6, 0)
 texture = ExtResource("3_i5arm")
 
 [node name="station_fromage" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, 2)
 mesh = SubResource("BoxMesh_wlxy5")
 
 [node name="Sprite3D" type="Sprite3D" parent="station_fromage"]
@@ -103,7 +103,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.35355338, -0.35355338, 0, 0.35355338, 0.
 texture = ExtResource("4_wc5p8")
 
 [node name="station_steak" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, -10)
 mesh = SubResource("BoxMesh_tcnuu")
 
 [node name="Sprite3D" type="Sprite3D" parent="station_steak"]
