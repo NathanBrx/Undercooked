@@ -1,13 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://dcdc7m2dmm2y8"]
+[gd_scene load_steps=30 format=3 uid="uid://dcdc7m2dmm2y8"]
 
 [ext_resource type="Script" uid="uid://c8u6t5uwh58el" path="res://game_manager.gd" id="1_8jrwq"]
 [ext_resource type="Texture2D" uid="uid://cg7fsrimk3f7m" path="res://ressources/chef.png" id="1_eakoi"]
 [ext_resource type="Texture2D" uid="uid://csau8paajmrvq" path="res://ressources/steak.png" id="2_8jrwq"]
 [ext_resource type="Texture2D" uid="uid://b5i80ahh6that" path="res://ressources/cheese.png" id="3_gth8u"]
 [ext_resource type="Texture2D" uid="uid://hrrx7653wdqo" path="res://ressources/salad.png" id="4_dq8jp"]
+[ext_resource type="Script" uid="uid://d18erej4fcsfy" path="res://station.gd" id="4_gth8u"]
 [ext_resource type="Texture2D" uid="uid://njrer4kbiyh5" path="res://ressources/retro.png" id="5_yawsv"]
 [ext_resource type="Script" uid="uid://bcnxscntuok10" path="res://path_follow_3d.gd" id="6_le433"]
 [ext_resource type="Script" uid="uid://borf7esa1li7v" path="res://agent.gd" id="7_2tadr"]
+[ext_resource type="Texture2D" uid="uid://canjygneegmf3" path="res://ressources/frigo.png" id="10_dq8jp"]
 
 [sub_resource type="Curve3D" id="Curve3D_wc5p8"]
 _data = {
@@ -71,9 +73,13 @@ size = Vector3(2.5, 2.5, 2.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
 size = Vector3(5, 1, 5)
 
-[node name="GameManager" type="Node3D" node_paths=PackedStringArray("stations")]
+[sub_resource type="BoxMesh" id="BoxMesh_yawsv"]
+size = Vector3(2, 4, 2)
+
+[node name="GameManager" type="Node3D" node_paths=PackedStringArray("stations", "character")]
 script = ExtResource("1_8jrwq")
-stations = [null]
+stations = [NodePath("station_pain_manager"), NodePath("station_salade_manager"), NodePath("station_steak_manager"), NodePath("station_fromage_manager"), NodePath("station_depot_manager")]
+character = NodePath("Path3D/PathFollow3D/CharacterBody3D")
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.580933, -0.7490399, 0.15011215)
@@ -98,6 +104,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="station_pain_manager" type="Node3D" parent="."]
+script = ExtResource("4_gth8u")
 
 [node name="station_pain" type="MeshInstance3D" parent="station_pain_manager"]
 mesh = SubResource("BoxMesh_6iypd")
@@ -178,6 +185,23 @@ transform = Transform3D(0.5, 0, 0, 0, 0.35355338, -0.35355338, 0, 0.35355338, 0.
 texture = ExtResource("1_eakoi")
 
 [node name="CollisionDepot" type="CollisionShape3D" parent="station_depot_manager/station_depot/AreaDepot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+shape = SubResource("BoxShape3D_i5arm")
+
+[node name="station_frigo_manager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.982698, 0, -16.891884)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="station_frigo_manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6630354, -2.9914818)
+mesh = SubResource("BoxMesh_yawsv")
+
+[node name="AreaDepot" type="Area3D" parent="station_frigo_manager"]
+
+[node name="Sprite3D" type="Sprite3D" parent="station_frigo_manager/AreaDepot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.35355338, -0.35355338, 0, 0.35355338, 0.35355338, 0, 6, 0)
+texture = ExtResource("10_dq8jp")
+
+[node name="CollisionDepot" type="CollisionShape3D" parent="station_frigo_manager/AreaDepot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 shape = SubResource("BoxShape3D_i5arm")
 
