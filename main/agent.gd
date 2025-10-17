@@ -6,6 +6,10 @@ extends CharacterBody3D
 @export var pain_colision:Node3D
 @export var depot_colision:Node3D
 @export var fridge_colision:Node3D
+var fromage_ready = false
+var salade_ready = false
+var steak_ready = false
+var pain_ready = false
 var held_item
 var recette
 var next_action
@@ -27,8 +31,19 @@ func origin(ing):
 		return 'steak'
 
 func algo():
-	if (queue_action.is_empty()):
-		move_to('fridge_manager')
+	
+	
+	if (held_item == null):
+		if(fromage_ready):
+			move_to('station_fromage_manager')
+		elif(salade_ready):
+			move_to('station_salade_manager')
+		elif(pain_ready):
+			move_to('station_pain_manager')
+		elif(steak_ready):
+			move_to('station_steak_manager')
+		else :
+			move_to('fridge_manager')
 	if (held_item == 'steak') :
 		move_to('station_steak_manager')
 	if (held_item == 'fromage'):
@@ -63,7 +78,7 @@ func move_to(station) :
 	elif (station == 'station_salade_manager'):
 		if salade_colision :
 			global_position = global_position.move_toward(salade_colision.global_position,0.1)
-	elif (station == 'station_fromage_manager'):
+	elif (station == 'station_pain_manager'):
 		if pain_colision :
 			global_position = global_position.move_toward(pain_colision.global_position,0.1)
 	elif (station == 'station_depot'):
@@ -72,9 +87,11 @@ func move_to(station) :
 	pass
 
 func get_from_fridge(ing) :
-	
+	if (held_item == null):
+		held_item = ing
+	else :
 	#effectue une action dépendemment de la station dans laquelle on se trouve et de l'inventaire de l'action 
-	pass
+		pass
 
 
 func _on_area_frigo_body_entered(body: Node3D) -> void:
@@ -82,4 +99,11 @@ func _on_area_frigo_body_entered(body: Node3D) -> void:
 		
 		get_from_fridge(origin(next_ing))
 		queue_action.pop_front()
-		print(queue_action)
+		
+
+
+func _on_station_fromage_manager_fromage_ready() -> void:
+	
+	fromage_ready = true
+	print(fromage_ready)
+	 # Replace with function body.

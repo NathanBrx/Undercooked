@@ -6,6 +6,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var timer: Timer = Timer.new()
 var ingredient = "fromage"
 var cooked_ingredient = "fromage fondu"
+signal fromage_ready()
 
 # --- Initialisation ---
 func _ready():
@@ -19,7 +20,7 @@ func _ready():
 	timer.timeout.connect(_on_preping_timer_timeout)
 
 # --- Logique de l'Aire d'Interaction ---
-func _on_area_pain_body_entered(body: Node3D) -> void:
+func _on_area_fromage_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Agents") and not preping_bool and body.held_item == ingredient:
 		body.held_item = null
 		preping() # Démarre le processus de préparation
@@ -27,6 +28,7 @@ func _on_area_pain_body_entered(body: Node3D) -> void:
 		body.sprite.texture = load("res://ressources/burger/4.png")
 		body.held_item = cooked_ingredient 
 		ingredient_ready = false
+		body.fromage_ready =false
 
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:
@@ -45,10 +47,12 @@ func preping() -> void:
 
 # --- Fonction Exécutée à la Fin du Timer ---
 func _on_preping_timer_timeout() -> void:
-	print("Ingrédient prêt !")
+	print("fromage prêt !")
 	
 	# Mettre à jour les booléens d'état
 	ingredient_ready = true
 	preping_bool = false
+	fromage_ready.emit()
+	print('fromage emit')
 	
 	# Mettez ici le code pour changer le sprite, notifier l'agent, etc.

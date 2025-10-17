@@ -5,6 +5,7 @@ var ingredients = ["salade", "steak", "fromage","pain"]
 func _on_area_frigo_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Agents") :
 		body.get_from_fridge(pop_random(ingredients))
+		
 
 func pop_random(array: Array):
 	# Safety check: Can't pop from an empty array.

@@ -18,9 +18,9 @@ func _ready():
 	timer.timeout.connect(_on_preping_timer_timeout)
 
 # --- Logique de l'Aire d'Interaction ---
-func _on_area_pain_body_entered(body: Node3D) -> void:
+func _on_area_salade_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Agents") and not preping_bool and body.held_item == ingredient:
-		body.held_item == null
+		body.held_item = null
 		preping() # Démarre le processus de préparation
 	elif body.is_in_group("Agents") and ingredient_ready and body.held_item == null:
 		body.sprite.texture = load("res://ressources/burger/3.png")
