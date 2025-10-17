@@ -16,6 +16,8 @@ var frames = [
 
 func _process(delta):
 	# avancer le PathFollow3D
-	path_follow.progress_ratio += 0.005  # exemple
-	if path_follow.progress_ratio > 1.0:
-		path_follow.progress_ratio = 1.0
+	pass
+
+
+func _on_area_steak_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
