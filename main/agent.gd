@@ -75,4 +75,3 @@ func _on_area_frigo_body_entered(body: Node3D) -> void:
 		get_from_fridge(origin(next_ing))
 		queue_action.pop_front()
 		print(queue_action)
-	pass # Replace with function body.

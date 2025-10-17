@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dcdc7m2dmm2y8"]
+[gd_scene load_steps=36 format=3 uid="uid://dcdc7m2dmm2y8"]
 
 [ext_resource type="Script" uid="uid://c8u6t5uwh58el" path="res://game_manager.gd" id="1_8jrwq"]
 [ext_resource type="Texture2D" uid="uid://cg7fsrimk3f7m" path="res://ressources/chef.png" id="1_eakoi"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dy4v02yoas7xq" path="res://station_fromage_manager.gd" id="8_yawsv"]
 [ext_resource type="Texture2D" uid="uid://canjygneegmf3" path="res://ressources/frigo.png" id="10_dq8jp"]
 [ext_resource type="Script" uid="uid://bq4fdvykf54ll" path="res://station_depot_manager.gd" id="12_es4nv"]
+[ext_resource type="Script" uid="uid://dicsgrkjobtmd" path="res://station_frigo_manager.gd" id="14_es4nv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
 albedo_color = Color(1, 1, 0.5254902, 1)
@@ -173,6 +174,7 @@ shape = SubResource("BoxShape3D_i5arm")
 
 [node name="station_frigo_manager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.108095, 0, -19.61313)
+script = ExtResource("14_es4nv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="station_frigo_manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6630354, -2.9914818)
@@ -214,5 +216,5 @@ shape = SubResource("ConvexPolygonShape3D_r3fl7")
 [connection signal="body_entered" from="station_cooking/station_steak/AreaSteak" to="station_cooking" method="_on_area_steak_body_entered"]
 [connection signal="body_entered" from="station_fromage_manager/station_fromage/AreaFromage" to="station_fromage_manager" method="_on_area_fromage_body_entered"]
 [connection signal="body_entered" from="station_depot_manager/station_depot/AreaDepot" to="station_depot_manager" method="_on_area_depot_body_entered"]
-[connection signal="body_entered" from="station_frigo_manager/AreaFrigo" to="." method="_on_area_depot_body_entered"]
 [connection signal="body_entered" from="station_frigo_manager/AreaFrigo" to="CharacterBody3D" method="_on_area_frigo_body_entered"]
+[connection signal="body_entered" from="station_frigo_manager/AreaFrigo" to="station_frigo_manager" method="_on_area_frigo_body_entered"]
