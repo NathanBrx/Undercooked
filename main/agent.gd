@@ -10,7 +10,6 @@ var held_item
 var recette
 var next_action
 var current_station
-var order = ['cooked_steak']
 var queue_action = []
 var next_ing
 var steak_station_position = Vector3(0, 0, 0)
@@ -28,20 +27,18 @@ func origin(ing):
 		return 'steak'
 
 func algo():
-	if (order.is_empty()):
-		pass
-	next_ing = order[0]
-	
-	if (next_ing == 'cooked_steak') and queue_action.is_empty():
-		queue_action.insert(0,'cook_'+origin(next_ing))
-		queue_action.insert(0,'take_'+origin(next_ing))
-		queue_action.append('bing_'+next_ing)
-	
-	
-	if (queue_action[0].substr(0,4) == 'take') :
+	if (queue_action.is_empty()):
 		move_to('fridge_manager')
-	elif (queue_action[0].substr(0,4) == 'cook') :
+	if (held_item == 'steak') :
 		move_to('station_steak_manager')
+	if (held_item == 'fromage'):
+		move_to('station_fromage_manager')
+	if (held_item == 'salade'):
+		move_to('station_salade_manager')
+	if (held_item == 'pain'):
+		move_to('station_pain_manager')
+	if (held_item == 'pain toast' or held_item == 'salade essorée' or held_item == 'steak cuit' or held_item == 'fromage fondu'):
+		move_to('station_depot')
 
 func see() :
 	#récupère les états des stations, de la commande
@@ -60,7 +57,18 @@ func move_to(station) :
 	elif (station == 'fridge_manager'):
 		if fridge_colision :
 			global_position = global_position.move_toward(fridge_colision.global_position,0.1)
-		
+	elif (station == 'station_fromage_manager'):
+		if fromage_colision :
+			global_position = global_position.move_toward(fromage_colision.global_position,0.1)
+	elif (station == 'station_salade_manager'):
+		if salade_colision :
+			global_position = global_position.move_toward(salade_colision.global_position,0.1)
+	elif (station == 'station_fromage_manager'):
+		if pain_colision :
+			global_position = global_position.move_toward(pain_colision.global_position,0.1)
+	elif (station == 'station_depot'):
+		if depot_colision :
+			global_position = global_position.move_toward(depot_colision.global_position,0.1)
 	pass
 
 func get_from_fridge(ing) :
