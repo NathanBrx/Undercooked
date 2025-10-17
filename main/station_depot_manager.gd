@@ -9,6 +9,3 @@ func _on_area_depot_body_entered(body: Node3D) -> void:
 	if inventory.has("steak cuit") and inventory.has("fromage fondu") and inventory.has("pain toast") and inventory.has("salade essorée") :
 		inventory.clear()
 		print("Burger envoyé !")
-func on_use() :
-	
-	pass
