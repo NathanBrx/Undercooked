@@ -1,6 +1,6 @@
 extends CharacterBody3D
 @export var sprite:Sprite3D
-var held_item
+var held_item:String
 var recette
 var next_action
 var current_station
