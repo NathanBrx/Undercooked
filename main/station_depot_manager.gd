@@ -1,5 +1,5 @@
 extends Node3D
-
+var inventory:Array = []
 func _on_area_depot_body_entered(body: Node3D) -> void:
 	body.current_station = self
 	if body.is_in_group("Agents") :

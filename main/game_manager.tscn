@@ -99,7 +99,7 @@ transform = Transform3D(0.5634015, 0, -0.826183, 0, 1, 0, 0.826183, 0, 0.5634015
 script = ExtResource("6_le433")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Path3D/PathFollow3D" node_paths=PackedStringArray("sprite") groups=["Agents"]]
-transform = Transform3D(1.1177285, 0, 1.6523663, 0, 1, 0, -1.6390588, 0, 1.1268033, -2.1617365, 1.3713167, -0.09108853)
+transform = Transform3D(1.1177285, 0, 1.6523663, 0, 1, 0, -1.6390588, 0, 1.1268033, 0, 0, 0)
 script = ExtResource("7_2tadr")
 sprite = NodePath("MeshInstance3D/Sprite3D")
 
