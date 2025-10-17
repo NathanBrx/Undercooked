@@ -4,6 +4,8 @@ var ingredient_ready: bool = false
 var preping_bool: bool = false
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var timer: Timer = Timer.new()
+var ingredient = "fromage"
+var cooked_ingredient = "fromage fondu"
 
 # --- Initialisation ---
 func _ready():
@@ -18,10 +20,13 @@ func _ready():
 
 # --- Logique de l'Aire d'Interaction ---
 func _on_area_pain_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Agents") and not preping_bool:
+	if body.is_in_group("Agents") and not preping_bool and body.held_item == ingredient:
+		body.held_item = null
 		preping() # Démarre le processus de préparation
-	elif body.is_in_group("Agents") and ingredient_ready :
+	elif body.is_in_group("Agents") and ingredient_ready and body.held_item == null:
 		body.sprite.texture = load("res://ressources/burger/4.png")
+		body.held_item = cooked_ingredient 
+		ingredient_ready = false
 
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:

@@ -25,7 +25,7 @@ func _on_area_pain_body_entered(body: Node3D) -> void:
 	elif body.is_in_group("Agents") and ingredient_ready and body.held_item == null:
 		body.sprite.texture = load("res://ressources/burger/1.png")
 		body.held_item == cooked_ingredient
-
+		ingredient_ready = false
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:
 	preping_bool = true
