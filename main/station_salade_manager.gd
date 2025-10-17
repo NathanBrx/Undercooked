@@ -6,6 +6,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var timer: Timer = Timer.new()
 var ingredient = "salade"
 var cooked_ingredient = "salade essorée"
+signal salade_ready()
 # --- Initialisation ---
 func _ready():
 	# 1. Ajouter le Timer à l'arborescence pour qu'il fonctionne
@@ -26,6 +27,7 @@ func _on_area_salade_body_entered(body: Node3D) -> void:
 		body.sprite.texture = load("res://ressources/burger/3.png")
 		body.held_item = cooked_ingredient
 		ingredient_ready = false
+		body.salade_ready =false
 
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:
@@ -49,5 +51,5 @@ func _on_preping_timer_timeout() -> void:
 	# Mettre à jour les booléens d'état
 	ingredient_ready = true
 	preping_bool = false
-	
+	salade_ready.emit()
 	# Mettez ici le code pour changer le sprite, notifier l'agent, etc.

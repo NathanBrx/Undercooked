@@ -107,3 +107,15 @@ func _on_station_fromage_manager_fromage_ready() -> void:
 	fromage_ready = true
 	print(fromage_ready)
 	 # Replace with function body.
+
+
+func _on_station_cooking_steak_ready() -> void:
+	steak_ready = true
+
+
+func _on_station_salade_manager_salade_ready() -> void:
+	salade_ready = true
+
+
+func _on_station_pain_manager_pain_ready() -> void:
+	pain_ready = true
