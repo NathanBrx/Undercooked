@@ -1,11 +1,11 @@
 extends CharacterBody3D
 @export var sprite:Sprite3D
-@export var steak_colision:Node3D
-@export var salade_colision:Node3D
-@export var fromage_colision:Node3D
-@export var pain_colision:Node3D
-@export var depot_colision:Node3D
-@export var fridge_colision:Node3D
+@export var steak_collision:Node3D
+@export var salade_collision:Node3D
+@export var fromage_collision:Node3D
+@export var pain_collision:Node3D
+@export var depot_collision:Node3D
+@export var fridge_collision:Node3D
 var fromage_ready = false
 var salade_ready = false
 var steak_ready = false
@@ -67,23 +67,23 @@ func move_to(station) :
 	
  #déplace le personnage vers la station correspondante
 	if (station == 'station_steak_manager'):
-		if steak_colision :
-			global_position = global_position.move_toward(steak_colision.global_position,0.1)
+		if steak_collision :
+			global_position = global_position.move_toward(steak_collision.global_position,0.1)
 	elif (station == 'fridge_manager'):
-		if fridge_colision :
-			global_position = global_position.move_toward(fridge_colision.global_position,0.1)
+		if fridge_collision :
+			global_position = global_position.move_toward(fridge_collision.global_position,0.1)
 	elif (station == 'station_fromage_manager'):
-		if fromage_colision :
-			global_position = global_position.move_toward(fromage_colision.global_position,0.1)
+		if fromage_collision :
+			global_position = global_position.move_toward(fromage_collision.global_position,0.1)
 	elif (station == 'station_salade_manager'):
-		if salade_colision :
-			global_position = global_position.move_toward(salade_colision.global_position,0.1)
+		if salade_collision :
+			global_position = global_position.move_toward(salade_collision.global_position,0.1)
 	elif (station == 'station_pain_manager'):
-		if pain_colision :
-			global_position = global_position.move_toward(pain_colision.global_position,0.1)
+		if pain_collision :
+			global_position = global_position.move_toward(pain_collision.global_position,0.1)
 	elif (station == 'station_depot'):
-		if depot_colision :
-			global_position = global_position.move_toward(depot_colision.global_position,0.1)
+		if depot_collision :
+			global_position = global_position.move_toward(depot_collision.global_position,0.1)
 	pass
 
 func get_from_fridge(ing) :
