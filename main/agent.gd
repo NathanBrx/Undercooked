@@ -6,11 +6,8 @@ extends CharacterBody3D
 @export var pain_collision:Node3D
 @export var depot_collision:Node3D
 @export var fridge_collision:Node3D
-var fromage_ready = false
-var salade_ready = false
-var steak_ready = false
-var pain_ready = false
-var held_item
+
+var held_item 
 var recette
 var next_action
 var current_station
@@ -18,8 +15,6 @@ var queue_action = []
 var next_ing
 var steak_station_position = Vector3(0, 0, 0)
 
-func _process(delta: float) -> void:
-	algo()
 
 func transforms(ing):
 	if (ing == 'steak'):
@@ -29,31 +24,6 @@ func origin(ing):
 	if (ing == 'cooked_steak'):
 	
 		return 'steak'
-
-func algo():
-	
-	
-	if (held_item == null):
-		if(fromage_ready):
-			move_to('station_fromage_manager')
-		elif(salade_ready):
-			move_to('station_salade_manager')
-		elif(pain_ready):
-			move_to('station_pain_manager')
-		elif(steak_ready):
-			move_to('station_steak_manager')
-		else :
-			move_to('fridge_manager')
-	if (held_item == 'steak') :
-		move_to('station_steak_manager')
-	if (held_item == 'fromage'):
-		move_to('station_fromage_manager')
-	if (held_item == 'salade'):
-		move_to('station_salade_manager')
-	if (held_item == 'pain'):
-		move_to('station_pain_manager')
-	if (held_item == 'pain toast' or held_item == 'salade essorée' or held_item == 'steak cuit' or held_item == 'fromage fondu'):
-		move_to('station_depot')
 
 func see() :
 	#récupère les états des stations, de la commande
@@ -94,28 +64,5 @@ func get_from_fridge(ing) :
 		pass
 
 
-func _on_area_frigo_body_entered(body: Node3D) -> void:
-	if (body.is_in_group('Agents')):
-		
-		get_from_fridge(origin(next_ing))
-		queue_action.pop_front()
-		
-
-
-func _on_station_fromage_manager_fromage_ready() -> void:
-	
-	fromage_ready = true
-	print(fromage_ready)
-	 # Replace with function body.
-
-
-func _on_station_cooking_steak_ready() -> void:
-	steak_ready = true
-
-
-func _on_station_salade_manager_salade_ready() -> void:
-	salade_ready = true
-
-
-func _on_station_pain_manager_pain_ready() -> void:
-	pain_ready = true
+func _on_station_frigo_manager_action_to(agent: Variant, dest: Variant) -> void:
+	move_to(dest) # Replace with function body.
