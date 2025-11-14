@@ -27,7 +27,6 @@ func _on_area_steak_body_entered(body: Node3D) -> void:
 		body.sprite.texture = load("res://ressources/burger/2.png")
 		body.held_item = cooked_ingredient
 		ingredient_ready = false
-		body.steak_ready = false
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:
 	preping_bool = true

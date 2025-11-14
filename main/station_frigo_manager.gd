@@ -42,11 +42,12 @@ func _ready() -> void:
 
 func generate_recipe():
 	var recipe = []
+	var test_recipe = ['fromage','steak','salade','pain']
 	var nb_ingredient = randi_range(1,5)
 	for i in range(nb_ingredient):
 		recipe.append(ingredients.pick_random())
 	recipe.append("pain")
-	return recipe
+	return test_recipe
 	
 func _on_area_frigo_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Agents") :
@@ -55,6 +56,7 @@ func _on_area_frigo_body_entered(body: Node3D) -> void:
 func transforms(ing):
 	if (ing == 'steak'):
 		return 'station_steak_manager'
+
 func origin(ing):
 	if (ing == 'cooked_steak'):
 		return 'steak'
@@ -72,37 +74,37 @@ func set_agent_endormi():
 	for k in etatAgents :
 		if (k.next_action == null and k.held_item == null):	
 			AgentEndormi.append(k)
-	print(actionAgents)
+
 func _process(delta: float) -> void:
 	set_agent_endormi()
-	if(fromage_ready):
+	if (fromage_ready && (!AgentEndormi.is_empty())):
 		var agent_actif = AgentEndormi.pick_random()
 		print('agent :',agent_actif)
-		agent_actif.next_action = 'fromageToDepot'
+		fromage_ready = false
 		set_agent_endormi()
-		action_to.emit(agent_actif,'station_fromage_manager')
-	if(salade_ready):
+		action_to.emit(agent_actif,'gotoFromage')
+	if (salade_ready && (!AgentEndormi.is_empty())):
 		var agent_actif = AgentEndormi.pick_random()
 		print('agent :',agent_actif)
-		agent_actif.next_action = 'saladeToDepot'
+		salade_ready = false
 		set_agent_endormi()
-		action_to.emit(agent_actif,'station_salade_manager')
-	if(steak_ready):
+		action_to.emit(agent_actif,'gotoSalade')
+	if (steak_ready && (!AgentEndormi.is_empty())):
 		var agent_actif = AgentEndormi.pick_random()
 		print('agent :',agent_actif)
-		agent_actif.next_action = 'steakToDepot'
+		steak_ready = false
 		set_agent_endormi()
-		action_to.emit(agent_actif,'station_steak_manager')	
-	if(pain_ready):
+		action_to.emit(agent_actif,'gotoSteak')
+	if (pain_ready && (!AgentEndormi.is_empty())):
 		var agent_actif = AgentEndormi.pick_random()
 		print('agent :',agent_actif)
-		agent_actif.next_action = 'painToDepot'
+		pain_ready = false
 		set_agent_endormi()
-		action_to.emit(agent_actif,'station_pain_manager')	
-	elif (recette != []):
+		action_to.emit(agent_actif,'gotoPain')
+	elif (!recette.is_empty()):
 		set_agent_endormi()
 		var agent_actif
-		if (AgentEndormi != []):
+		if (!AgentEndormi.is_empty()):
 			agent_actif = AgentEndormi.pick_random()
 		else :
 			agent_actif = null
@@ -111,7 +113,7 @@ func _process(delta: float) -> void:
 				agent_actif.next_action = 'gotoFridge'
 				set_agent_endormi()
 				print(agent_actif,' : ',agent_actif.next_action,' & ', agent_actif.held_item)
-				action_to.emit(agent_actif,'frigo_manager')
+				action_to.emit(agent_actif,'gotoFridge')
 
 
 
