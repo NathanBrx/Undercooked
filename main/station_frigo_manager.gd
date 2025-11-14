@@ -31,6 +31,7 @@ func _ready() -> void:
 	Nat = list_agent[1]
 	Ili = list_agent[2]
 	Art = list_agent[3]
+	print(Mat)
 	etatAgents[Mat] = Mat.held_item
 	actionAgents[Mat] = Mat.next_action
 	etatAgents[Nat] = Nat.held_item
@@ -61,14 +62,18 @@ func origin(ing):
 	if (ing == 'cooked_steak'):
 		return 'steak'
 		
-func get_etat_agent(agent):
-	if (etatAgents[agent] != agent.held_item):
-		etatAgents[agent] = agent.held_item
-	if (actionAgents[agent] != agent.next_action) :
-		actionAgents[agent] = agent.next_action
-	print(agent, ' : ',etatAgents[agent])
-	return etatAgents[agent]
-	
+func get_etat_agent():
+	for i in list_agent :
+		if (etatAgents[i] != i.held_item):
+			etatAgents[i] = i.held_item
+		if (actionAgents[i] != i.next_action) :
+			actionAgents[i] = i.next_action
+	var pr = ""
+	for i in actionAgents :
+		if (actionAgents[i] != null):
+			pr += ' ; '+str(i)+' : '+str(actionAgents[i])
+	if (pr != ""):
+		print(pr)
 func set_agent_endormi():
 	AgentEndormi = []
 	for k in etatAgents :
@@ -77,27 +82,32 @@ func set_agent_endormi():
 
 func _process(delta: float) -> void:
 	set_agent_endormi()
+	get_etat_agent()
 	if (fromage_ready && (!AgentEndormi.is_empty())):
+		get_etat_agent()
 		var agent_actif = AgentEndormi.pick_random()
-		print('agent :',agent_actif)
+		print('agent fromage:',agent_actif)
 		fromage_ready = false
 		set_agent_endormi()
 		action_to.emit(agent_actif,'gotoFromage')
-	if (salade_ready && (!AgentEndormi.is_empty())):
+	elif (salade_ready && (!AgentEndormi.is_empty())):
+		get_etat_agent()
 		var agent_actif = AgentEndormi.pick_random()
-		print('agent :',agent_actif)
+		print('agent salade:',agent_actif)
 		salade_ready = false
 		set_agent_endormi()
 		action_to.emit(agent_actif,'gotoSalade')
-	if (steak_ready && (!AgentEndormi.is_empty())):
+	elif (steak_ready && (!AgentEndormi.is_empty())):
+		get_etat_agent()
 		var agent_actif = AgentEndormi.pick_random()
-		print('agent :',agent_actif)
+		print('agent steak:',agent_actif)
 		steak_ready = false
 		set_agent_endormi()
 		action_to.emit(agent_actif,'gotoSteak')
-	if (pain_ready && (!AgentEndormi.is_empty())):
+	elif (pain_ready && (!AgentEndormi.is_empty())):
+		get_etat_agent()
 		var agent_actif = AgentEndormi.pick_random()
-		print('agent :',agent_actif)
+		print('agent pain:',agent_actif)
 		pain_ready = false
 		set_agent_endormi()
 		action_to.emit(agent_actif,'gotoPain')
@@ -124,10 +134,6 @@ func _on_station_fromage_manager_fromage_ready() -> void:
 	 # Replace with function body.
 
 
-func _on_station_cooking_steak_ready() -> void:
-	steak_ready = true
-
-
 func _on_station_salade_manager_salade_ready() -> void:
 	salade_ready = true
 
@@ -148,4 +154,4 @@ func pop_random(array: Array):
 
 
 func _on_station_steak_manager_steak_ready() -> void:
-	pass # Replace with function body.
+	steak_ready = true

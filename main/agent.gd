@@ -29,7 +29,6 @@ func next() :
 	pass
 
 func algo():
-	#print(held_item,' ',next_action)
 	if (next_action == 'gotoFridge'):
 		move_to('fridge_manager')
 	if (held_item == 'steak' or next_action == 'gotoSteak') :
@@ -40,7 +39,7 @@ func algo():
 		move_to('station_salade_manager')
 	if (held_item == 'pain' or next_action == 'gotoPain'):
 		move_to('station_pain_manager')
-	if (held_item == 'pain toast' or held_item == 'salade essorée' or held_item == 'steak cuit' or held_item == 'fromage fondu'):
+	if (held_item == 'pain toast' or held_item == 'salade essorée' or held_item == 'steak cuit' or held_item == 'fromage fondu' or next_action == 'gotoDepot'):
 		move_to('station_depot')
 	if (next_action == null and held_item == null):
 		move_to('base')
