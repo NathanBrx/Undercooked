@@ -8,13 +8,18 @@ var list_agent
 var Mat
 var Mat_item
 var Nat
+var Nat_item
 var Ili
+var Ili_item
 var Art
-var etatAgents
+var Art_item
+var etatAgents = {}
+var actionAgents = {}
+var AgentEndormi = []
 signal action_to(agent,dest)
 
 
-	
+
 
 var ingredients = ["salade", "steak", "fromage"]
 
@@ -26,18 +31,27 @@ func _ready() -> void:
 	Nat = list_agent[1]
 	Ili = list_agent[2]
 	Art = list_agent[3]
-	etatAgents = { Mat.name: Mat.held_item, Nat.name: Nat.held_item, Ili.name : Ili.held_item, Art.name : Art.held_item}
+	etatAgents[Mat] = Mat.held_item
+	actionAgents[Mat] = Mat.next_action
+	etatAgents[Nat] = Nat.held_item
+	actionAgents[Nat] = Nat.next_action
+	etatAgents[Ili] = Ili.held_item
+	actionAgents[Ili] = Ili.next_action
+	etatAgents[Art] = Art.held_item
+	actionAgents[Art] = Art.next_action
 
 func generate_recipe():
 	var recipe = []
 	var nb_ingredient = randi_range(1,5)
 	for i in range(nb_ingredient):
 		recipe.append(ingredients.pick_random())
+	recipe.append("pain")
 	return recipe
 	
 func _on_area_frigo_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Agents") :
-		body.get_from_fridge(pop_random(ingredients))
+		body.get_from_fridge(pop_random(recette))
+		
 func transforms(ing):
 	if (ing == 'steak'):
 		return 'station_steak_manager'
@@ -46,19 +60,59 @@ func origin(ing):
 		return 'steak'
 		
 func get_etat_agent(agent):
-	return etatAgents[agent.name]
+	if (etatAgents[agent] != agent.held_item):
+		etatAgents[agent] = agent.held_item
+	if (actionAgents[agent] != agent.next_action) :
+		actionAgents[agent] = agent.next_action
+	print(agent, ' : ',etatAgents[agent])
+	return etatAgents[agent]
 	
-	
+func set_agent_endormi():
+	AgentEndormi = []
+	for k in etatAgents :
+		if (k.next_action == null and k.held_item == null):	
+			AgentEndormi.append(k)
+	print(actionAgents)
 func _process(delta: float) -> void:
-	Mat_item = get_etat_agent(Mat)
-	if (Mat_item == null):
-		if (fromage_ready == false and salade_ready == false and steak_ready == false and pain_ready == false):
-			action_to.emit(Mat,'fridge_manager')
-	
-	
-		
+	set_agent_endormi()
+	if(fromage_ready):
+		var agent_actif = AgentEndormi.pick_random()
+		print('agent :',agent_actif)
+		agent_actif.next_action = 'fromageToDepot'
+		set_agent_endormi()
+		action_to.emit(agent_actif,'station_fromage_manager')
+	if(salade_ready):
+		var agent_actif = AgentEndormi.pick_random()
+		print('agent :',agent_actif)
+		agent_actif.next_action = 'saladeToDepot'
+		set_agent_endormi()
+		action_to.emit(agent_actif,'station_salade_manager')
+	if(steak_ready):
+		var agent_actif = AgentEndormi.pick_random()
+		print('agent :',agent_actif)
+		agent_actif.next_action = 'steakToDepot'
+		set_agent_endormi()
+		action_to.emit(agent_actif,'station_steak_manager')	
+	if(pain_ready):
+		var agent_actif = AgentEndormi.pick_random()
+		print('agent :',agent_actif)
+		agent_actif.next_action = 'painToDepot'
+		set_agent_endormi()
+		action_to.emit(agent_actif,'station_pain_manager')	
+	elif (recette != []):
+		set_agent_endormi()
+		var agent_actif
+		if (AgentEndormi != []):
+			agent_actif = AgentEndormi.pick_random()
+		else :
+			agent_actif = null
+		if (agent_actif != null):
+			if (agent_actif.held_item == null):
+				agent_actif.next_action = 'gotoFridge'
+				set_agent_endormi()
+				print(agent_actif,' : ',agent_actif.next_action,' & ', agent_actif.held_item)
+				action_to.emit(agent_actif,'frigo_manager')
 
-		
 
 
 func _on_station_fromage_manager_fromage_ready() -> void:
@@ -89,3 +143,7 @@ func pop_random(array: Array):
 	
 	# Pop the element at that index and return it
 	return array.pop_at(random_index)
+
+
+func _on_station_steak_manager_steak_ready() -> void:
+	pass # Replace with function body.

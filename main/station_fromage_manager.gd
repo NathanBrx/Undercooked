@@ -28,7 +28,8 @@ func _on_area_fromage_body_entered(body: Node3D) -> void:
 		body.sprite.texture = load("res://ressources/burger/4.png")
 		body.held_item = cooked_ingredient 
 		ingredient_ready = false
-		body.fromage_ready =false
+		var manager = get_tree().get_nodes_in_group("manager")
+		manager[0].fromage_ready = false
 
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:

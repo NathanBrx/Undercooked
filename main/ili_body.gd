@@ -1,22 +1,14 @@
 extends CharacterBody3D
 @export var sprite:Sprite3D
-#@export var steak_collision:Node3D
-#@export var salade_collision:Node3D
-#@export var fromage_collision:Node3D
-#@export var pain_collision:Node3D
-#@export var depot_collision:Node3D
-#@export var fridge_collision:Node3D
+@export var steak_collision:Node3D
+@export var salade_collision:Node3D
+@export var fromage_collision:Node3D
+@export var pain_collision:Node3D
+@export var depot_collision:Node3D
+@export var fridge_collision:Node3D
 @export var base_collision:Node3D
 
 @onready var base = $"../../station_base_manager/station_base/AreaBase/CollisionBase"
-@onready var fridge_collision = $"../../station_frigo_manager/AreaFrigo/CollisionFrigo"
-@onready var steak_collision = $"../../station_steak_manager/station_steak/AreaSteak/CollisionSteak"
-@onready var salade_collision = $"../../station_salade_manager/station_salade/AreaSalade/CollisionSalade"
-@onready var fromage_collision = $"../../station_fromage_manager/station_fromage/AreaFromage/CollisionFromage"
-@onready var pain_collision = $"../../station_pain_manager/station_pain/AreaPain/CollisionPain"
-@onready var depot_collision = $"../../station_depot_manager/station_depot/AreaDepot/CollisionDepot"
-
-
 
 var held_item 
 var recette
@@ -26,7 +18,7 @@ var next_ing
 
 
 func _process(delta: float) -> void:
-	#move_to('fridge_manager')
+	move_to('fridge_manager')
 	algo()
 
 
@@ -39,7 +31,6 @@ func next() :
 	pass
 
 func algo():
-	#print(held_item,' ',next_action)
 	if (next_action == 'gotoFridge'):
 		move_to('fridge_manager')
 	if (held_item == 'steak') :
@@ -52,7 +43,7 @@ func algo():
 		move_to('station_pain_manager')
 	if (held_item == 'pain toast' or held_item == 'salade essorée' or held_item == 'steak cuit' or held_item == 'fromage fondu'):
 		move_to('station_depot')
-	if (next_action == null and held_item == null):
+	if (next_action == null):
 			move_to('base')
 	
 func move_to(station) :
@@ -83,7 +74,7 @@ func move_to(station) :
 func get_from_fridge(ing) :
 	if (held_item == null):
 		held_item = ing
-	next_action=null
+	next_action==null
 
 
 func _on_station_frigo_manager_action_to(agent: Variant, dest: Variant) -> void:
