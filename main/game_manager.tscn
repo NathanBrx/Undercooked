@@ -291,6 +291,7 @@ shape = SubResource("ConvexPolygonShape3D_r3fl7")
 [connection signal="fromage_ready" from="station_fromage_manager" to="station_frigo_manager" method="_on_station_fromage_manager_fromage_ready"]
 [connection signal="body_entered" from="station_fromage_manager/station_fromage/AreaFromage" to="station_fromage_manager" method="_on_area_fromage_body_entered"]
 [connection signal="body_entered" from="station_depot_manager/station_depot/AreaDepot" to="station_depot_manager" method="_on_area_depot_body_entered"]
+[connection signal="action_to" from="station_frigo_manager" to="Characters/MatBody" method="_on_station_frigo_manager_action_to"]
 [connection signal="action_to" from="station_frigo_manager" to="Characters/NatBody" method="_on_station_frigo_manager_action_to"]
 [connection signal="action_to" from="station_frigo_manager" to="Characters/IliBody" method="_on_station_frigo_manager_action_to"]
 [connection signal="action_to" from="station_frigo_manager" to="Characters/ArtBody" method="_on_station_frigo_manager_action_to"]

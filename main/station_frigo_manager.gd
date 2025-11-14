@@ -31,7 +31,6 @@ func _ready() -> void:
 	Nat = list_agent[1]
 	Ili = list_agent[2]
 	Art = list_agent[3]
-	print(Mat)
 	etatAgents[Mat] = Mat.held_item
 	actionAgents[Mat] = Mat.next_action
 	etatAgents[Nat] = Nat.held_item
@@ -125,18 +124,13 @@ func _process(delta: float) -> void:
 				print(agent_actif,' : ',agent_actif.next_action,' & ', agent_actif.held_item)
 				action_to.emit(agent_actif,'gotoFridge')
 
-
-
 func _on_station_fromage_manager_fromage_ready() -> void:
 	
 	fromage_ready = true
 	print(fromage_ready)
-	 # Replace with function body.
-
 
 func _on_station_salade_manager_salade_ready() -> void:
 	salade_ready = true
-
 
 func _on_station_pain_manager_pain_ready() -> void:
 	pain_ready = true
