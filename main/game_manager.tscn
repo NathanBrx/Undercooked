@@ -231,8 +231,9 @@ shape = SubResource("BoxShape3D_i5arm")
 [node name="Characters" type="Node3D" parent="."]
 
 [node name="MatBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.984, 0, 0, 0, 1, 0, 0, 0, 2, -6.5464377, 0, -11.320877)
+transform = Transform3D(1.984, 0, 0, 0, 1, 0, 0, 0, 2, -7.959182, 0.54505444, -9.844853)
 script = ExtResource("15_lx373")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/MatBody"]
 mesh = SubResource("CapsuleMesh_f0lch")
@@ -244,8 +245,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="NatBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -12.235505, 0.6222768, -4.283847)
+transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.815446, 0.6222768, -6.9730263)
 script = ExtResource("15_lx373")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/NatBody"]
 mesh = SubResource("CapsuleMesh_lx373")
@@ -257,8 +259,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="IliBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -6.796064, 0.6222768, -3.8934336)
+transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -7.6363907, 0.6222768, -7.098532)
 script = ExtResource("15_lx373")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/IliBody"]
 mesh = SubResource("CapsuleMesh_d246e")
@@ -270,8 +273,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="ArtBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -14.314663, 0.6222768, -11.954265)
+transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.732157, 0.6222768, -9.910438)
 script = ExtResource("15_lx373")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/ArtBody"]
 mesh = SubResource("CapsuleMesh_7bexq")
