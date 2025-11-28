@@ -1,75 +1,40 @@
-[gd_scene load_steps=34 format=3 uid="uid://dcdc7m2dmm2y8"]
+[gd_scene load_steps=28 format=3 uid="uid://dcdc7m2dmm2y8"]
 
 [ext_resource type="Script" uid="uid://c8u6t5uwh58el" path="res://game_manager.gd" id="1_8jrwq"]
 [ext_resource type="Texture2D" uid="uid://cg7fsrimk3f7m" path="res://ressources/chef.png" id="1_eakoi"]
 [ext_resource type="Texture2D" uid="uid://csau8paajmrvq" path="res://ressources/steak.png" id="2_8jrwq"]
 [ext_resource type="Texture2D" uid="uid://b5i80ahh6that" path="res://ressources/cheese.png" id="3_gth8u"]
 [ext_resource type="Texture2D" uid="uid://hrrx7653wdqo" path="res://ressources/salad.png" id="4_dq8jp"]
+[ext_resource type="PackedScene" uid="uid://bq6y6lynu6ifs" path="res://ressources/textures/models/a_salamander_grill.glb" id="4_es4nv"]
 [ext_resource type="Script" uid="uid://d18erej4fcsfy" path="res://station.gd" id="4_gth8u"]
 [ext_resource type="Texture2D" uid="uid://njrer4kbiyh5" path="res://ressources/retro.png" id="5_yawsv"]
 [ext_resource type="Script" uid="uid://dbo4qyihcerq0" path="res://station_salade_manager.gd" id="6_2tadr"]
 [ext_resource type="Script" uid="uid://borf7esa1li7v" path="res://agent.gd" id="7_2tadr"]
+[ext_resource type="PackedScene" uid="uid://dvofrahq8bpkx" path="res://ressources/textures/models/cutting_table.glb" id="7_anra8"]
 [ext_resource type="Script" uid="uid://dy0eh02cf02ab" path="res://station_steak_manager.gd" id="8_tmn8n"]
 [ext_resource type="Script" uid="uid://dy4v02yoas7xq" path="res://station_fromage_manager.gd" id="8_yawsv"]
 [ext_resource type="Texture2D" uid="uid://canjygneegmf3" path="res://ressources/frigo.png" id="10_dq8jp"]
+[ext_resource type="PackedScene" uid="uid://dd4vyg3f4m1nq" path="res://ressources/textures/models/barbecue_grill.glb" id="10_lx373"]
 [ext_resource type="Script" uid="uid://bq4fdvykf54ll" path="res://station_depot_manager.gd" id="12_es4nv"]
+[ext_resource type="PackedScene" uid="uid://f433051me2tm" path="res://ressources/textures/models/sandwich_iron.glb" id="13_s6dek"]
 [ext_resource type="Script" uid="uid://dicsgrkjobtmd" path="res://station_frigo_manager.gd" id="14_es4nv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
-albedo_color = Color(1, 1, 0.5254902, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6iypd"]
-material = SubResource("StandardMaterial3D_4arys")
-size = Vector3(2.5, 2.5, 2.5)
+[ext_resource type="PackedScene" uid="uid://bvbxvbc7tlr37" path="res://ressources/textures/models/wooden_bar.glb" id="16_d246e"]
+[ext_resource type="PackedScene" uid="uid://dq31yy5x4o1af" path="res://ressources/textures/models/not-too-modern_fridge.glb" id="16_f0lch"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
 size = Vector3(4, 1, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
-albedo_color = Color(0.30588236, 0.6901961, 0.11372549, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cdqbm"]
-material = SubResource("StandardMaterial3D_tereu")
-size = Vector3(2.5, 2.5, 2.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jsk3o"]
 size = Vector3(4, 1, 3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v7ru"]
-albedo_color = Color(0.7271852, 0.25602368, 0.22938564, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tcnuu"]
-material = SubResource("StandardMaterial3D_3v7ru")
-size = Vector3(2.5, 2.5, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6iypd"]
 size = Vector3(4, 1, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imku0"]
-albedo_color = Color(0.30595058, 0.42797688, 0.69776905, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wlxy5"]
-material = SubResource("StandardMaterial3D_imku0")
-size = Vector3(2.5, 2.5, 2.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_4arys"]
 size = Vector3(6, 1, 4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuemg"]
-albedo_color = Color(0.9662046, 0.41488862, 0.49742115, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_i0g27"]
-material = SubResource("StandardMaterial3D_tuemg")
-size = Vector3(2.5, 2.5, 2.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
 size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yawsv"]
-size = Vector3(2, 4, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq8jp"]
-albedo_color = Color(0.43310028, 0.33938122, 0.24492246, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a0tk4"]
 
@@ -85,100 +50,93 @@ sprite = NodePath("CharacterBody3D/MeshInstance3D/Sprite3D")
 [node name="station_pain_manager" type="Node3D" parent="."]
 script = ExtResource("4_gth8u")
 
-[node name="station_pain" type="MeshInstance3D" parent="station_pain_manager"]
-mesh = SubResource("BoxMesh_6iypd")
-skeleton = NodePath("../../..")
+[node name="AreaPain" type="Area3D" parent="station_pain_manager"]
 
-[node name="AreaPain" type="Area3D" parent="station_pain_manager/station_pain"]
-
-[node name="Sprite3D" type="Sprite3D" parent="station_pain_manager/station_pain/AreaPain"]
+[node name="Sprite3D" type="Sprite3D" parent="station_pain_manager/AreaPain"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 6, 0)
 texture = ExtResource("5_yawsv")
 
-[node name="CollisionPain" type="CollisionShape3D" parent="station_pain_manager/station_pain/AreaPain"]
+[node name="CollisionPain" type="CollisionShape3D" parent="station_pain_manager/AreaPain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 shape = SubResource("BoxShape3D_wc5p8")
 
+[node name="Sketchfab_Scene" parent="station_pain_manager" instance=ExtResource("4_es4nv")]
+transform = Transform3D(-1.5298985e-09, 0, -0.035, 0, 0.035, 0, 0.035, 0, -1.5298985e-09, 0, -0.65614414, 0)
+
 [node name="station_salade_manager" type="Node3D" parent="."]
+transform = Transform3D(1.0900961, 0, 0, 0, 0.99999976, 0, 0, 0, 1.2086645, -18.419456, 0, -12.298244)
 script = ExtResource("6_2tadr")
 
-[node name="station_salade" type="MeshInstance3D" parent="station_salade_manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -12)
-mesh = SubResource("BoxMesh_cdqbm")
-skeleton = NodePath("../../..")
+[node name="AreaSalade" type="Area3D" parent="station_salade_manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.310254, 0, -0.6743081)
 
-[node name="AreaSalade" type="Area3D" parent="station_salade_manager/station_salade"]
-
-[node name="Sprite3D" type="Sprite3D" parent="station_salade_manager/station_salade/AreaSalade"]
+[node name="Sprite3D" type="Sprite3D" parent="station_salade_manager/AreaSalade"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 6, 0)
 texture = ExtResource("4_dq8jp")
 
-[node name="CollisionSalade" type="CollisionShape3D" parent="station_salade_manager/station_salade/AreaSalade"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+[node name="CollisionSalade" type="CollisionShape3D" parent="station_salade_manager/AreaSalade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5014744, -0.06352234, -0.05626583)
 shape = SubResource("BoxShape3D_jsk3o")
 
+[node name="Sketchfab_Scene" parent="station_salade_manager" instance=ExtResource("7_anra8")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.09999997, -3.3307915, -0.59523726, -1.1124115)
+
 [node name="station_cooking" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1860118, 0, -8.30818)
 script = ExtResource("8_tmn8n")
 
-[node name="station_steak" type="MeshInstance3D" parent="station_cooking"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-mesh = SubResource("BoxMesh_tcnuu")
-skeleton = NodePath("../../..")
+[node name="AreaSteak" type="Area3D" parent="station_cooking"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1786041, 0, -2.7336817)
 
-[node name="AreaSteak" type="Area3D" parent="station_cooking/station_steak"]
-
-[node name="Sprite3D" type="Sprite3D" parent="station_cooking/station_steak/AreaSteak"]
+[node name="Sprite3D" type="Sprite3D" parent="station_cooking/AreaSteak"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 6, 0)
 texture = ExtResource("2_8jrwq")
 
-[node name="CollisionSteak" type="CollisionShape3D" parent="station_cooking/station_steak/AreaSteak"]
+[node name="CollisionSteak" type="CollisionShape3D" parent="station_cooking/AreaSteak"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 shape = SubResource("BoxShape3D_6iypd")
 
+[node name="Sketchfab_Scene" parent="station_cooking" instance=ExtResource("10_lx373")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.4713087, 0, -2.8417416)
+
 [node name="station_fromage_manager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.943325, 0, 0)
 script = ExtResource("8_yawsv")
 
-[node name="station_fromage" type="MeshInstance3D" parent="station_fromage_manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
-mesh = SubResource("BoxMesh_wlxy5")
-skeleton = NodePath("../../..")
+[node name="AreaFromage" type="Area3D" parent="station_fromage_manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2402267, 0, 0)
 
-[node name="AreaFromage" type="Area3D" parent="station_fromage_manager/station_fromage"]
-
-[node name="Sprite3D" type="Sprite3D" parent="station_fromage_manager/station_fromage/AreaFromage"]
+[node name="Sprite3D" type="Sprite3D" parent="station_fromage_manager/AreaFromage"]
 transform = Transform3D(0.5, 0, 0, 0, 0.35355338, -0.35355338, 0, 0.35355338, 0.35355338, 0, 6, 0)
 texture = ExtResource("3_gth8u")
 
-[node name="CollisionFromage" type="CollisionShape3D" parent="station_fromage_manager/station_fromage/AreaFromage"]
+[node name="CollisionFromage" type="CollisionShape3D" parent="station_fromage_manager/AreaFromage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 shape = SubResource("BoxShape3D_4arys")
+
+[node name="Sketchfab_Scene" parent="station_fromage_manager" instance=ExtResource("13_s6dek")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, -0.583889, -1.2461114, 8.252504)
 
 [node name="station_depot_manager" type="Node3D" parent="."]
 script = ExtResource("12_es4nv")
 
-[node name="station_depot" type="MeshInstance3D" parent="station_depot_manager"]
+[node name="AreaDepot" type="Area3D" parent="station_depot_manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 8)
-mesh = SubResource("BoxMesh_i0g27")
-skeleton = NodePath("../../..")
 
-[node name="AreaDepot" type="Area3D" parent="station_depot_manager/station_depot"]
-
-[node name="Sprite3D" type="Sprite3D" parent="station_depot_manager/station_depot/AreaDepot"]
+[node name="Sprite3D" type="Sprite3D" parent="station_depot_manager/AreaDepot"]
 transform = Transform3D(0.5, 0, 0, 0, 0.35355338, -0.35355338, 0, 0.35355338, 0.35355338, 0, 6, 0)
 texture = ExtResource("1_eakoi")
 
-[node name="CollisionDepot" type="CollisionShape3D" parent="station_depot_manager/station_depot/AreaDepot"]
+[node name="CollisionDepot" type="CollisionShape3D" parent="station_depot_manager/AreaDepot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 shape = SubResource("BoxShape3D_i5arm")
 
-[node name="station_frigo_manager" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.108095, 0, -19.61313)
-script = ExtResource("14_es4nv")
+[node name="Sketchfab_Scene" parent="station_depot_manager" instance=ExtResource("16_d246e")]
+transform = Transform3D(-0.05, 0, -4.371139e-09, 0, 0.05, 0, 4.371139e-09, 0, -0.05, -10.214577, 0, 5.712701)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="station_frigo_manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6630354, -2.9914818)
-mesh = SubResource("BoxMesh_yawsv")
-surface_material_override/0 = SubResource("StandardMaterial3D_dq8jp")
+[node name="station_frigo_manager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.008899, 0, -19.61313)
+script = ExtResource("14_es4nv")
 
 [node name="AreaFrigo" type="Area3D" parent="station_frigo_manager"]
 
@@ -190,15 +148,18 @@ texture = ExtResource("10_dq8jp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 shape = SubResource("BoxShape3D_i5arm")
 
+[node name="Sketchfab_Scene" parent="station_frigo_manager" instance=ExtResource("16_f0lch")]
+transform = Transform3D(-1.0927848e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.0927848e-09, 0.4589901, -0.73204637, -1.5419502)
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("sprite", "steak_colision", "salade_colision", "fromage_colision", "pain_colision", "depot_colision", "fridge_colision") groups=["Agents"]]
 transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.618376, 0.6222768, -9.657757)
 script = ExtResource("7_2tadr")
 sprite = NodePath("MeshInstance3D/Sprite3D")
-steak_colision = NodePath("../station_cooking/station_steak/AreaSteak/CollisionSteak")
-salade_colision = NodePath("../station_salade_manager/station_salade/AreaSalade/CollisionSalade")
-fromage_colision = NodePath("../station_fromage_manager/station_fromage/AreaFromage/CollisionFromage")
-pain_colision = NodePath("../station_pain_manager/station_pain/AreaPain/CollisionPain")
-depot_colision = NodePath("../station_depot_manager/station_depot/AreaDepot/CollisionDepot")
+steak_colision = NodePath("../station_cooking/AreaSteak/CollisionSteak")
+salade_colision = NodePath("../station_salade_manager/AreaSalade/CollisionSalade")
+fromage_colision = NodePath("../station_fromage_manager/AreaFromage/CollisionFromage")
+pain_colision = NodePath("../station_pain_manager/AreaPain/CollisionPain")
+depot_colision = NodePath("../station_depot_manager/AreaDepot/CollisionDepot")
 fridge_colision = NodePath("../station_frigo_manager/AreaFrigo/CollisionFrigo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
@@ -211,13 +172,13 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [connection signal="pain_ready" from="station_pain_manager" to="CharacterBody3D" method="_on_station_pain_manager_pain_ready"]
-[connection signal="body_entered" from="station_pain_manager/station_pain/AreaPain" to="station_pain_manager" method="_on_area_pain_body_entered"]
+[connection signal="body_entered" from="station_pain_manager/AreaPain" to="station_pain_manager" method="_on_area_pain_body_entered"]
 [connection signal="salade_ready" from="station_salade_manager" to="CharacterBody3D" method="_on_station_salade_manager_salade_ready"]
-[connection signal="body_entered" from="station_salade_manager/station_salade/AreaSalade" to="station_salade_manager" method="_on_area_salade_body_entered"]
+[connection signal="body_entered" from="station_salade_manager/AreaSalade" to="station_salade_manager" method="_on_area_salade_body_entered"]
 [connection signal="steak_ready" from="station_cooking" to="CharacterBody3D" method="_on_station_cooking_steak_ready"]
-[connection signal="body_entered" from="station_cooking/station_steak/AreaSteak" to="station_cooking" method="_on_area_steak_body_entered"]
+[connection signal="body_entered" from="station_cooking/AreaSteak" to="station_cooking" method="_on_area_steak_body_entered"]
 [connection signal="fromage_ready" from="station_fromage_manager" to="CharacterBody3D" method="_on_station_fromage_manager_fromage_ready"]
-[connection signal="body_entered" from="station_fromage_manager/station_fromage/AreaFromage" to="station_fromage_manager" method="_on_area_fromage_body_entered"]
-[connection signal="body_entered" from="station_depot_manager/station_depot/AreaDepot" to="station_depot_manager" method="_on_area_depot_body_entered"]
+[connection signal="body_entered" from="station_fromage_manager/AreaFromage" to="station_fromage_manager" method="_on_area_fromage_body_entered"]
+[connection signal="body_entered" from="station_depot_manager/AreaDepot" to="station_depot_manager" method="_on_area_depot_body_entered"]
 [connection signal="body_entered" from="station_frigo_manager/AreaFrigo" to="station_frigo_manager" method="_on_area_frigo_body_entered"]
 [connection signal="body_entered" from="station_frigo_manager/AreaFrigo" to="CharacterBody3D" method="_on_area_frigo_body_entered"]
