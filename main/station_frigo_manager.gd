@@ -1,4 +1,7 @@
 extends Node3D
+
+@onready var timer = $"../"
+
 var fromage_ready = false
 var salade_ready = false
 var steak_ready = false
@@ -40,6 +43,7 @@ func _ready() -> void:
 	actionAgents[Art] = Art.next_action
 
 func generate_recipe():
+	timer.timer.start()
 	var recipe = []
 	var ingredient_recipe = ingredients.duplicate()
 	var nb_ingredient = randi_range(1,3)

@@ -1,10 +1,13 @@
 extends Node3D
 var inventory:Array = []
 @onready var frigo = $"../station_frigo_manager"
+@onready var timer = $"../"
 var recette
-	
+var liste_temps = []
 
-		
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+	
 func transform(ing):
 	if (ing == 'steak') :
 		return 'steak cuit'
@@ -31,6 +34,9 @@ func _on_area_depot_body_entered(body: Node3D) -> void:
 	inventory.sort()
 	if (inventory == recette) :
 		inventory.clear()
+		liste_temps.append(round_to_dec(30-timer.timer.time_left,3))
+		print(liste_temps)
 		print("Burger envoyé !\n\n")
 		recette.clear()
+		
 		frigo.recette = frigo.generate_recipe()
