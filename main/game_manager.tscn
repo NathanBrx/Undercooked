@@ -231,7 +231,7 @@ shape = SubResource("BoxShape3D_i5arm")
 [node name="Characters" type="Node3D" parent="."]
 
 [node name="MatBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.984, 0, 0, 0, 1, 0, 0, 0, 2, -7.959182, 0.54505444, -9.844853)
+transform = Transform3D(1.984, 0, 0, 0, 1, 0, 0, 0, 2, -8.1274185, 0.5958054, -9.777176)
 script = ExtResource("15_lx373")
 metadata/_edit_group_ = true
 
@@ -245,7 +245,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="NatBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.815446, 0.6222768, -6.9730263)
+transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.9243145, 0.6222768, -6.9608326)
 script = ExtResource("15_lx373")
 metadata/_edit_group_ = true
 
@@ -259,7 +259,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="IliBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -7.6363907, 0.6222768, -7.098532)
+transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -8.250379, 0.6222768, -6.9085674)
 script = ExtResource("15_lx373")
 metadata/_edit_group_ = true
 
@@ -273,7 +273,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
 [node name="ArtBody" type="CharacterBody3D" parent="Characters" groups=["Agents"]]
-transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.732157, 0.6222768, -9.910438)
+transform = Transform3D(1.9838924, 0, -5.9604645e-08, 0, 1, 0, 0, 0, 1.9999998, -10.995363, 0.6222768, -9.758396)
 script = ExtResource("15_lx373")
 metadata/_edit_group_ = true
 
@@ -286,6 +286,8 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.5, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/ArtBody"]
 shape = SubResource("ConvexPolygonShape3D_r3fl7")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pain_ready" from="station_pain_manager" to="station_frigo_manager" method="_on_station_pain_manager_pain_ready"]
 [connection signal="body_entered" from="station_pain_manager/station_pain/AreaPain" to="station_pain_manager" method="_on_area_pain_body_entered"]
 [connection signal="salade_ready" from="station_salade_manager" to="station_frigo_manager" method="_on_station_salade_manager_salade_ready"]
@@ -295,6 +297,7 @@ shape = SubResource("ConvexPolygonShape3D_r3fl7")
 [connection signal="fromage_ready" from="station_fromage_manager" to="station_frigo_manager" method="_on_station_fromage_manager_fromage_ready"]
 [connection signal="body_entered" from="station_fromage_manager/station_fromage/AreaFromage" to="station_fromage_manager" method="_on_area_fromage_body_entered"]
 [connection signal="body_entered" from="station_depot_manager/station_depot/AreaDepot" to="station_depot_manager" method="_on_area_depot_body_entered"]
+[connection signal="action_to" from="station_frigo_manager" to="Characters/MatBody" method="_on_station_frigo_manager_action_to"]
 [connection signal="action_to" from="station_frigo_manager" to="Characters/NatBody" method="_on_station_frigo_manager_action_to"]
 [connection signal="action_to" from="station_frigo_manager" to="Characters/IliBody" method="_on_station_frigo_manager_action_to"]
 [connection signal="action_to" from="station_frigo_manager" to="Characters/ArtBody" method="_on_station_frigo_manager_action_to"]
