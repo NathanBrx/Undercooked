@@ -26,15 +26,15 @@ func _on_area_salade_body_entered(body: Node3D) -> void:
 	elif body.is_in_group("Agents") and ingredient_ready and body.held_item == null:
 		body.sprite.texture = load("res://ressources/burger/3.png")
 		body.held_item = cooked_ingredient
+		body.next_action = 'gotoDepot'
 		ingredient_ready = false
-		body.salade_ready =false
 
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:
 	preping_bool = true
 	
 	# Définir une plage aléatoire, par exemple entre 2.0 et 5.0 secondes
-	var temps_attente_aleatoire: float = rng.randf_range(4.0, 15.0) 
+	var temps_attente_aleatoire: float = rng.randf_range(4.0, 7.0) 
 	
 	print("Préparation démarrée. Temps d'attente : ", temps_attente_aleatoire, "s.")
 	
@@ -46,7 +46,7 @@ func preping() -> void:
 
 # --- Fonction Exécutée à la Fin du Timer ---
 func _on_preping_timer_timeout() -> void:
-	print("Ingrédient prêt !")
+	print("Salade prête !")
 	
 	# Mettre à jour les booléens d'état
 	ingredient_ready = true
