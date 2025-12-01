@@ -27,15 +27,17 @@ func _on_area_fromage_body_entered(body: Node3D) -> void:
 	elif body.is_in_group("Agents") and ingredient_ready and body.held_item == null:
 		body.sprite.texture = load("res://ressources/burger/4.png")
 		body.held_item = cooked_ingredient 
+		body.next_action = 'gotoDepot'
 		ingredient_ready = false
-		body.fromage_ready =false
+		var manager = get_tree().get_nodes_in_group("manager")
+		manager[0].fromage_ready = false
 
 # --- Logique de Préparation (Lancement du Timer Aléatoire) ---
 func preping() -> void:
 	preping_bool = true
 	
 	# Définir une plage aléatoire, par exemple entre 2.0 et 5.0 secondes
-	var temps_attente_aleatoire: float = rng.randf_range(4.0, 15.0) 
+	var temps_attente_aleatoire: float = rng.randf_range(4.0, 7.0) 
 	
 	print("Préparation démarrée. Temps d'attente : ", temps_attente_aleatoire, "s.")
 	
@@ -53,6 +55,5 @@ func _on_preping_timer_timeout() -> void:
 	ingredient_ready = true
 	preping_bool = false
 	fromage_ready.emit()
-	print('fromage emit')
 	
 	# Mettez ici le code pour changer le sprite, notifier l'agent, etc.
