@@ -1,17 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjf41jviagama"]
+[gd_scene load_steps=21 format=3 uid="uid://bjf41jviagama"]
 
 [ext_resource type="PackedScene" uid="uid://dcdc7m2dmm2y8" path="res://game_manager.tscn" id="1_a202f"]
+[ext_resource type="Texture2D" uid="uid://7qquf5psxls6" path="res://ressources/textures/interior_tiles_diff_4k.png" id="1_jka67"]
+[ext_resource type="Texture2D" uid="uid://opmt67wajg7r" path="res://ressources/textures/interior_tiles_nor_gl_4k.png" id="3_wc5p8"]
+[ext_resource type="Texture2D" uid="uid://b3fueufc1uaxw" path="res://ressources/textures/interior_tiles_rough_4k.png" id="4_jsk3o"]
+[ext_resource type="Texture2D" uid="uid://dj4txmn2vyre4" path="res://ressources/textures/Wall/whitewashed_brick_diff_4k.png" id="5_jsk3o"]
+[ext_resource type="Texture2D" uid="uid://dk0kwb0delfb4" path="res://ressources/textures/Wall/whitewashed_brick_ao_4k.png" id="6_4arys"]
+[ext_resource type="Texture2D" uid="uid://qu3siw3hs7kf" path="res://ressources/textures/Wall/whitewashed_brick_nor_gl_4k.png" id="7_6iypd"]
+[ext_resource type="Texture2D" uid="uid://dyu64bfglkbo1" path="res://ressources/textures/Wall/whitewashed_brick_rough_4k.png" id="8_tereu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cdqbm"]
+load_path = "res://.godot/imported/interior_tiles_ao_4k.png-8092c6485e54503157a1e0457b6323a1.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+albedo_texture = ExtResource("1_jka67")
+roughness_texture = ExtResource("4_jsk3o")
+normal_enabled = true
+normal_texture = ExtResource("3_wc5p8")
+ao_enabled = true
+ao_texture = SubResource("CompressedTexture2D_cdqbm")
+uv1_scale = Vector3(7, 7, 7)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
+material = SubResource("StandardMaterial3D_4arys")
 size = Vector2(20, 20)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a202f"]
 points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jsk3o"]
+load_path = "res://.godot/imported/whitewashed_brick_diff_4k.png-414da96e08ddb57f93df008079cbd7dd.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4arys"]
+load_path = "res://.godot/imported/whitewashed_brick_ao_4k.png-736ed2e83fba39fe4e199d6c5994cbb8.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6iypd"]
+load_path = "res://.godot/imported/whitewashed_brick_nor_gl_4k.png-cf7faad050944b3f9c41b0e657a0ac3a.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tereu"]
+load_path = "res://.godot/imported/whitewashed_brick_rough_4k.png-7add42071809cd19ca257e9f24ae4b42.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
+albedo_texture = SubResource("CompressedTexture2D_jsk3o")
+roughness_texture = SubResource("CompressedTexture2D_tereu")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_6iypd")
+ao_enabled = true
+ao_texture = SubResource("CompressedTexture2D_4arys")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jka67"]
+material = SubResource("StandardMaterial3D_cdqbm")
+size = Vector2(40, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlxy5"]
+albedo_texture = ExtResource("5_jsk3o")
+roughness_texture = ExtResource("8_tereu")
+normal_enabled = true
+normal_texture = ExtResource("7_6iypd")
+ao_enabled = true
+ao_texture = ExtResource("6_4arys")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_i5arm"]
+material = SubResource("StandardMaterial3D_wlxy5")
+size = Vector2(40, 20)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.9838929, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2.1213202, 0, 2.138291, 0, 1.512, 0, -2.1213202, 0, 2.138291, -0.07143402, 0, 0.120773315)
 mesh = SubResource("PlaneMesh_4xowi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
@@ -24,7 +80,23 @@ shape = SubResource("ConvexPolygonShape3D_a202f")
 transform = Transform3D(1, 0, 0, 0, 0.038230833, 0.99926895, 0, -0.99926895, 0.038230833, 0, 3.0368526, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.9999756, -0.004487447, 0.0053479313, 0, 0.76604444, 0.6427876, -0.0069812285, 0.6427719, -0.7660258, 0, 10, -22.703407)
+transform = Transform3D(-0.9959034, -0.05812341, 0.06926878, 0, 0.7660445, 0.6427876, -0.09042397, 0.6401543, -0.76290625, 0.33407068, 10, -22.703407)
 
 [node name="GameManager" parent="." instance=ExtResource("1_a202f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.6169014, 2)
+
+[node name="Wall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, 1, -1, 4.371139e-08, -4.371139e-08, 15, 5, -5)
+mesh = SubResource("PlaneMesh_jka67")
+
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, 1, 1, 4.371139e-08, -4.371139e-08, -15, 5, -5)
+mesh = SubResource("PlaneMesh_i5arm")
+skeleton = NodePath("../Wall1")
+
+[node name="Wall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 4.371139e-08, -4.371139e-08, 1.9106855e-15, 1, 0, -1, 1.9106855e-15, 0.5645561, 4.7070065, 15.212824)
+mesh = SubResource("PlaneMesh_jka67")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.40900457, -0.6858231, 0.60196525, 0.073225416, 0.63287085, 0.77078706, -0.9095898, 0.35933462, -0.20862743, 1.5745296, 12.62746, -28.638052)
