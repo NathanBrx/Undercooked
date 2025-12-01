@@ -8,7 +8,7 @@ extends CharacterBody3D
 @onready var salade_collision = $"../../station_salade_manager/station_salade/AreaSalade/CollisionSalade"
 @onready var fromage_collision = $"../../station_fromage_manager/station_fromage/AreaFromage/CollisionFromage"
 @onready var pain_collision = $"../../station_pain_manager/station_pain/AreaPain/CollisionPain"
-@onready var depot_collision = $"../../station_depot_manager/station_depot/AreaDepot/CollisionDepot"
+@onready var depot_collision = $"../../station_depot_manager/station_depot/AreaDepot"
 
 var held_item 
 var recette

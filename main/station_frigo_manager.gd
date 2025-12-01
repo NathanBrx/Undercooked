@@ -76,6 +76,7 @@ func get_etat_agent():
 	for i in actionAgents :
 		if (actionAgents[i] != null):
 			pr += ' ; '+str(i)+' : '+str(actionAgents[i])
+
 func set_agent_endormi():
 	AgentEndormi = []
 	for k in etatAgents :
